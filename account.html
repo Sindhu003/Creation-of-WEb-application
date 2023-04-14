@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothes 4 Men - Account</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="items.html">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="account">
+      <h2>Account Information</h2>
+      <form action="account" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="<%= request.getAttribute("name") %>" required>
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="<%= request.getAttribute("email") %>" required>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+        <button type="submit">Save Changes</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 Clothes 4 Men. All rights reserved.</p>
+  </footer>
+</body>
+</html>

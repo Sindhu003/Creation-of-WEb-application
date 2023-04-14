@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothes 4 Men - Admin Orders</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="items.html">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="admin">
+      <h2>Admin Orders</h2>
+      <nav>
+        <ul>
+          <li><a href="admin-customers.html">Customers</a></li>
+          <li><a href="admin-products.html">Products</a></li>
+        </ul>
+      </nav>
+      <section class="orders">
+        <h3>Orders</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer Name</th>
+              <th>Order Date</th>
+              <th>Order Total</th>
+              <th>Order Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% 
+              // Get the data from the database using Java Servlets
+              List<Order> orders = orderDao.getAllOrders();
+              for (Order order : orders) {
+            %>
+            <tr>
+              <td><%= order.getId() %></td>
+              <td><%= order.getCustomerName() %></td>
+              <td><%= order.getOrderDate() %></td>
+              <td><%= order.getOrderTotal() %></td>
+              <td><%= order.getOrderStatus() %></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </section>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 Clothes 4 Men. All rights reserved.</p>
+  </footer>
+</body>
+</html>

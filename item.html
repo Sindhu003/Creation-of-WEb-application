@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothes 4 Men - Item</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="items.html">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="item-details">
+      <div class="item-image">
+        <% 
+            int itemId = Integer.parseInt(request.getParameter("id"));
+            Item item = ItemDao.getItemById(itemId);
+        %>
+        <img src="<%= item.getImageUrl() %>" alt="<%= item.getName() %>">
+      </div>
+      <div class="item-info">
+        <h2><%= item.getName() %></h2>
+        <p>$<%= item.getPrice() %></p>
+        <p><%= item.getDescription() %></p>
+        <form action="cart" method="post">
+          <input type="hidden" name="action" value="add">
+          <input type="hidden" name="id" value="<%= itemId %>">
+          <label for="quantity">Quantity:</label>
+          <input type="number" name="quantity" value="1" min="1">
+          <button type="submit">Add to Cart</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 Clothes 4 Men. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+In this example, we've used a Java Servlet to retrieve the item information from the PostgreSQL database based on the ID passed through the URL parameter "id". We then dynamically generate HTML code to display the item information, including the item name, price, description, and image. We've also updated the "Add to Cart" form to include the item ID and a quantity input field that allows the user to select the quantity of items to add to their cart.
+
+
+
+
+

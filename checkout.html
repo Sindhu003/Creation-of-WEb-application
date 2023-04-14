@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothes 4 Men - Checkout</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="items.html">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="checkout">
+      <h2>Checkout</h2>
+      <form action="checkout" method="post">
+        <% 
+          // Get user data from the database
+          String name = request.getParameter("name");
+          String email = request.getParameter("email");
+          String address = request.getParameter("address");
+        %>
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="<%= name %>" required>
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="<%= email %>" required>
+        <label for="address">Address:</label>
+        <textarea name="address" rows="3" required><%= address %></textarea>
+        <label for="card">Credit Card Number:</label>
+        <input type="number" name="card" required>
+        <label for="expiry">Expiry Date:</label>
+        <input type="month" name="expiry" required>
+        <label for="cvv">CVV:</label>
+        <input type="number" name="cvv" required>
+        <button type="submit">Place Order</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 Clothes 4 Men. All rights reserved.</p>
+  </footer>
+</body>
+</html>

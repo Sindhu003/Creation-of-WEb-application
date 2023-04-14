@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothes 4 Men - Shop</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="items">
+      <h2>Shop</h2>
+      <form action="cart" method="post">
+        <input type="hidden" name="action" value="add">
+        <div class="filters">
+          <label for="category">Category:</label>
+          <select name="category" id="category">
+            <option value="">All</option>
+            <option value="shirts">Shirts</option>
+            <option value="pants">Pants</option>
+            <option value="shoes">Shoes</option>
+            <option value="accessories">Accessories</option>
+          </select>
+        </div>
+        <div class="items-list featured-container">
+          <% 
+            // Import required classes
+            out.println("<%@ page import=\"java.sql.*, javax.naming.*, javax.sql.*\" %>");
+            // Get a connection to the database
+            Context initContext = new InitialContext();
+            Context envContext = (Context)initContext.lookup("java:/comp/env");
+            DataSource ds = (DataSource)envContext.lookup("jdbc/clothes4men");
+            Connection conn = ds.getConnection();
+            
+            // Define the SQL query to retrieve items from the database
+            String sql = "SELECT * FROM items";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            
+            // Retrieve items from the database
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+              // Output HTML code for each item
+              out.println("<div class=\"item\">");
+              out.println("<a href=\"item.html?id=" + rs.getInt("id") + "\">");
+              out.println("<img src=\"" + rs.getString("image_url") + "\" alt=\"" + rs.getString("name") + "\">");
+              out.println("<h3>" + rs.getString("name") + "</h3>");
+              out.println("<p>$" + rs.getDouble("price") + "</p>");
+              out.println("</a>");
+              out.println("<input type=\"number\" name=\"quantity_" + rs.getInt("id") + "\" value=\"1\" min=\"1\">");
+              out.println("<button type=\"submit\">Add to Cart</button>");
+              out.println("</div>");
+            }
+            
+            // Close the database connection
+            rs.close();
+            stmt.close();
+            conn.close();
+          %>
+        </div>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 Clothes 4 Men. All rights reserved.</p>
+  </footer>
+</body>
+</html>    

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothes 4 Men - Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="items.html">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <h1>Welcome to Clothes 4 Men</h1>
+      <p>Find the latest fashion trends for men at affordable prices.</p>
+      <a href="items.html" class="btn btn-primary">Shop Now</a>
+    </section>
+    <section class="featured-items">
+      <h2>Featured Items</h2>
+      <div class="featured-container">
+        <% 
+            List<Item> featuredItems = ItemDao.getFeaturedItems();
+            for (Item item : featuredItems) {
+        %>
+        <div class="item">
+          <a href="item.html">
+            <img src="<%= item.getImageUrl() %>" alt="<%= item.getName() %>">
+            <h3><%= item.getName() %></h3>
+            <p>$<%= item.getPrice() %></p>
+          </a>
+        </div>
+        <% } %>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 Clothes 4 Men. All rights reserved.</p>
+  </footer>
+</body>
+</html>

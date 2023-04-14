@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothes 4 Men - Edit Item</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="items.html">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="admin">
+      <h2>Edit Item</h2>
+      <nav>
+        <ul>
+          <li><a href="admin-customers.html">Customers</a></li>
+          <li><a href="admin-orders.html">Orders</a></li>
+          <li><a href="admin-items.html">Items</a></li>
+        </ul>
+      </nav>
+      <section class="edit-item">
+        <form action="#" method="POST">
+          <label for="product-name">Product Name:</label>
+          <input type="text" name="product-name" id="product-name" value="<%= request.getAttribute("productName") %>">
+
+          <label for="description">Description:</label>
+          <textarea name="description" id="description"><%= request.getAttribute("productDescription") %></textarea>
+    
+          <label for="price">Price:</label>
+          <input type="number" name="price" id="price" min="0" step="0.01" value="<%= request.getAttribute("productPrice") %>">
+    
+          <label for="quantity">Quantity in Stock:</label>
+          <input type="number" name="quantity" id="quantity" min="0" value="<%= request.getAttribute("productQuantity") %>">
+    
+          <button type="submit">Save Changes</button>
+        </form>
+      </section>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 Clothes 4 Men. All rights reserved.</p>
+  </footer>
+</body>
+</html>    

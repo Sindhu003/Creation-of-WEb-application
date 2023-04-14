@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothes 4 Men - Cart</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="items.html">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="cart">
+      <h2>Shopping Cart</h2>
+      <form action="cart" method="post">
+        <input type="hidden" name="action" value="update">
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%
+              // Assuming the cart items are fetched from the database as a List of CartItems
+              List<CartItem> cartItems = (List<CartItem>) request.getAttribute("cartItems");
+              
+              // Loop through the cart items and display them in the table
+              for (CartItem item : cartItems) {
+            %>
+            <tr>
+              <td><%= item.getName() %></td>
+              <td>$<%= item.getPrice() %></td>
+              <td>
+                <input type="number" name="quantity" value="<%= item.getQuantity() %>" min="1">
+              </td>
+              <td>$<%= item.getSubtotal() %></td>
+              <td>
+                <button type="submit" name="id" value="<%= item.getId() %>">Update</button>
+                <button type="submit" name="id" value="<%= item.getId() %>" formaction="cart?action=remove">Remove</button>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">Total:</td>
+              <td>$<%= Cart.getTotal(cartItems) %></td>
+              <td>
+                <button type="submit" name="action" value="clear">Clear Cart</button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </form>
+      <a href="checkout.html">Checkout</a>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 Clothes 4 Men. All rights reserved.</p>
+  </footer>
+</body>
+</html>

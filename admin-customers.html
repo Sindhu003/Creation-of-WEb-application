@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Admin Panel - Customers</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<header>
+		<nav>
+		  <ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="items.html">Shop</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Contact</a></li>
+			<li><a href="cart.html">Cart</a></li>
+		  </ul>
+		</nav>
+	  </header>
+
+	<main>
+		<h1>Customer Accounts</h1>
+
+		<!-- Table to display customer information -->
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Username</th>
+					<th>Email</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Loop through all customer accounts and display their information -->
+				<c:forEach var="customer" items="${customers}">
+					<tr>
+						<td>${customer.getId()}</td>
+						<td>${customer.getUsername()}</td>
+						<td>${customer.getEmail()}</td>
+						<td>${customer.getFirstName()}</td>
+						<td>${customer.getLastName()}</td>
+						<td>
+							<!-- Link to view customer details -->
+							<a href="admin-customer-details?id=${customer.getId()}">View Details</a>
+
+							<!-- Link to delete customer account -->
+							<a href="admin-customer-delete?id=${customer.getId()}">Delete</a>
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+
+		<!-- Link to add a new customer account -->
+		<a href="admin-customer-add">Add Customer</a>
+	</main>
+
+	<footer>
+		<p>&copy; 2023 Clothes 4 Men. All rights reserved.</p>
+	  </footer>
+</body>
+</html>

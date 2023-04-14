@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothes 4 Men - Admin Items</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="items.html">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="admin">
+      <h2>Admin Items</h2>
+      <nav>
+        <ul>
+          <li><a href="admin-customers.html">Customers</a></li>
+          <li><a href="admin-orders.html">Orders</a></li>
+        </ul>
+      </nav>
+      <section class="items">
+        <h3>Items</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Quantity in Stock</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% 
+            // Code to retrieve data from the database and store it in a List<Item> object
+            List<Item> itemList = retrieveItemsFromDatabase();
+              // Loop through the itemList and generate table rows for each item
+              for (Item item : itemList) {
+              %>
+              <tr>
+                <td><%= item.getProductId() %></td>
+                <td><%= item.getProductName() %></td>
+                <td><%= item.getDescription() %></td>
+                <td>$<%= item.getPrice() %></td>
+                <td><%= item.getQuantity() %></td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 Clothes 4 Men. All rights reserved.</p>
+    </footer>
+  </body>
+  </html>      

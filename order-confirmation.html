@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothes 4 Men - Order Confirmation</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="items.html">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="confirmation">
+      <h2>Order Confirmation</h2>
+      <p>Thank you for your order, {customer_name}! We have received your payment and will process your order soon. Your order details are as follows:</p>
+      <ul>
+        <li>Order ID: #{order_id}</li>
+        <li>Items:</li>
+        <ul>
+          {items_list}
+        </ul>
+        <li>Shipping Address: {shipping_address}</li>
+        <li>Payment Method: {payment_method}</li>
+        <li>Total: {total_amount}</li>
+      </ul>
+      <p>We will send you an email confirmation shortly with more information on your order status and shipping details. Thank you for shopping with Clothes 4 Men!</p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 Clothes 4 Men. All rights reserved.</p>
+  </footer>
+</body>
+</html>
